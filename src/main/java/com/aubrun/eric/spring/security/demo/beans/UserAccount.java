@@ -3,15 +3,15 @@ package com.aubrun.eric.spring.security.demo.beans;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name = "userSpring_id_generator", sequenceName = "userSpring_id_seq", allocationSize = 1)
-@Table(name = "USERSPRING")
-public class UserSpring {
+@SequenceGenerator(name = "user_account_id_generator", sequenceName = "user_account_id_seq", allocationSize = 1)
+@Table(name = "USER_ACCOUNT")
+public class UserAccount {
 
     private Long id;
     private String username;
     private String password;
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "userSpring_id_generator")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_account_id_generator")
     public Long getId() {
         return id;
     }
