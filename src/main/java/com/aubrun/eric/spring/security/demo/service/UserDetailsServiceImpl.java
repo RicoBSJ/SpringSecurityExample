@@ -1,7 +1,8 @@
 package com.aubrun.eric.spring.security.demo.service;
 
-import com.aubrun.eric.spring.security.demo.beans.UserAccount;
+import com.aubrun.eric.spring.security.demo.domain.UserAccount;
 import com.aubrun.eric.spring.security.demo.repositories.UserAccountRepository;
+import com.aubrun.eric.spring.security.demo.security.CustomSecurityUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,6 +21,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (userAccount == null){
             throw new UsernameNotFoundException("Username and or password was incorrect !");
         }
-        return userAccount;
+        return new CustomSecurityUser();
     }
 }

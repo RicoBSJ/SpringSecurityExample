@@ -1,6 +1,8 @@
-package com.aubrun.eric.spring.security.demo.beans;
+package com.aubrun.eric.spring.security.demo.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @SequenceGenerator(name = "user_account_id_generator", sequenceName = "user_account_id_seq", allocationSize = 1)
@@ -10,6 +12,7 @@ public class UserAccount {
     private Long id;
     private String username;
     private String password;
+    private Set<Authorities> authorities = new HashSet<>();
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_account_id_generator")
     public Long getId() {
@@ -34,5 +37,14 @@ public class UserAccount {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "UserAccount")
+    public Set<Authorities> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(Set<Authorities> authorities) {
+        this.authorities = authorities;
     }
 }
