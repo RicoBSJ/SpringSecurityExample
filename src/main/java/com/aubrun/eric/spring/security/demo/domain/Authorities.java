@@ -1,19 +1,20 @@
 package com.aubrun.eric.spring.security.demo.domain;
 
-import com.aubrun.eric.spring.security.demo.security.CustomSecurityUser;
-import org.springframework.security.core.GrantedAuthority;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 public class Authorities implements GrantedAuthority {
-
     private Long id;
     private String authority;
-    private CustomSecurityUser customSecurityUser;
+    private User user;
 
-    @Id
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -31,11 +32,12 @@ public class Authorities implements GrantedAuthority {
         this.authority = authority;
     }
 
-    public CustomSecurityUser getCustomSecurityUser() {
-        return customSecurityUser;
+    @ManyToOne
+    public User getUser() {
+        return user;
     }
 
-    public void setCustomSecurityUser(CustomSecurityUser customSecurityUser) {
-        this.customSecurityUser = customSecurityUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

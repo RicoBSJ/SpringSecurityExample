@@ -15,10 +15,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
     private UserDetailsService userDetailsService;
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder () {
         return new BCryptPasswordEncoder();
     }
 
@@ -26,11 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService)
-//                .inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder);
-//                .withUser("rico@gmail.com")
-//                .password("$2a$10$dhegs6t01SkJGSbH/eCkP.GIVGlj9lYwFFZZduBUHQzHX31IliOCS")
-//                .roles("USER", "ADMIN");
     }
 
     @Override
@@ -38,11 +35,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                    .anyRequest().hasAnyRole("USER").and()
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .anyRequest().hasAnyRole("USER").and()
                 .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/dashboard")
-                    .permitAll();
+                .loginPage("/login")
+                .defaultSuccessUrl("/dashboard")
+                .permitAll();
     }
 }

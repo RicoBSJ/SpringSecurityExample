@@ -1,9 +1,19 @@
 package com.aubrun.eric.spring.security.demo.security;
 
-import com.aubrun.eric.spring.security.demo.domain.UserAccount;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class CustomSecurityUser extends UserAccount implements UserDetails {
+import com.aubrun.eric.spring.security.demo.domain.User;
+
+public class CustomSecurityUser extends User implements UserDetails {
+
+    public CustomSecurityUser () {}
+
+    public CustomSecurityUser(User user) {
+        this.setAuthorities(user.getAuthorities());
+        this.setId(user.getId());
+        this.setPassword(user.getPassword());
+        this.setUsername(user.getUsername());
+    }
 
     @Override
     public boolean isAccountNonExpired() {
