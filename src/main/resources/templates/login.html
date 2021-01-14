@@ -18,12 +18,10 @@
         <!-- the configured LogoutConfigurer#logoutSuccessUrl is /login?logout and contains the query param logout -->
         <div th:if="${param.logout != null}">You have been logged out.</div>
         <p>
-            <label for="username">Username</label> <input type="text"
-                                                          id="username" name="username" />
+            <label for="username">Username</label> <input type="text" id="username" name="username"/>
         </p>
         <p>
-            <label for="password">Password</label> <input type="password"
-                                                          id="password" name="password" />
+            <label for="password">Password</label> <input type="password" id="password" name="password"/>
         </p>
         <div>
             <button type="submit" class="btn">Log in</button>

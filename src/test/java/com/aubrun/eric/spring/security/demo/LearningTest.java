@@ -1,18 +1,17 @@
 package com.aubrun.eric.spring.security.demo;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class LearningTest {
 
     @Test
-    public void encrypt_password(){
-
+    public void encrypt_password() {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-        String encodePassword = passwordEncoder.encode("password123");
+        String encodedPassword = passwordEncoder.encode("postgres");
 
-        System.out.println(encodePassword);
+        System.out.println(encodedPassword);
     }
 }
