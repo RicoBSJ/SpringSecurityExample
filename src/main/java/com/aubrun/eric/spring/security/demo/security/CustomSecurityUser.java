@@ -1,7 +1,6 @@
 package com.aubrun.eric.spring.security.demo.security;
 
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.aubrun.eric.spring.security.demo.domain.User;
 
 public class CustomSecurityUser extends User implements UserDetails {
